@@ -1,0 +1,226 @@
+#Markdown使用指南
+(1)标题
+使用不同数量的"#"来标识是什么层级，对应H1-H6。
+示例: #This is H1.
+使用===标识大标题，---标识中标题，
+示例2:this is a big head
+================
+示例3: this is a middle head
+-------------------
+(2)链接
+使用"[链接文字](链接地址 "鼠标悬停显示")"，或者"<链接地址>"，来标识链接
+示例: [address](http://baidu.com "tips")
+示例2: <http://baidu.com>
+(2.1)高级链接
+通过变量来设置一个链接，变量赋值在文档末尾进行
+示例: this is digit link[google][1]
+this is word link[Runoob][runoob]
+...
+[1]: http://google.com
+[runoob]: http://runoob.com
+(3)插入图片
+![图片的替代文字](图片的地址)
+示例: ![picture](https://circleci.com/gh/greenbone/gvm-libs/tree/master.svg?style=svg)
+示例2: 图片超链接: [![picture](https://circleci.com/gh/greenbone/gvm-libs/tree/master.svg?style=svg)](http://baidu.com)
+(4)强调
+使用*或_给文本添加强调的效果
+示例: *斜体*, **粗体**, ***粗斜体***
+(5)文本框
+使用两个tab可以生成文本框，多行文本框时，需要在每行都使用两个tab。
+示例: 		this is two tab line 
+(6)高亮显示
+使用``给文本添加高亮的效果
+示例: `this is highlightening text`
+(7)插入符号
+使用"* "，或者"- ", 或者"+ "来标识插入符号，使用tab加"* "可以标识多级符号。
+示例: * first level
+		* second level
+			* third level ...
+示例2: - first level
+	   - second level
+(8)换行
+不能直接通过回车来换行，可使用<br>或者<br/>来换行，或者使用(两个空格+回车)来换行，或者使用一个空行来换行。
+示例1: this is a new line.<br>
+示例2: this is two space and CRLF
+this is the new line
+(9)缩进
+使用>来标识缩进，使用多个>对应多级缩进。
+示例: > level_1
+	  >> level_2
+	  >>> level_3
+(9)插入代码段
+使用```语言 ... ```来标识代码
+示例: 
+```c++
+if (a) {a=3;}
+```
+(10)列表标记
+使用"数字.加空格"来标识列表。
+示例: 1. this is first
+(11)分割线
+使用---, 或者***, 或者___, 上面一个空行，可以标识一条直线
+示例:
+-----------------
+(12)删除线
+使用~~来标识删除线。
+示例: ~~this is a deleted line~~
+(13)下划线
+使用html标签<u></u>来标识下划线
+示例: <u>this is a under line</u>
+(14)脚注
+使用[^要脚注的文本]
+示例: [^]
+(15)表格
+使用|来分隔不同的单元格，使用-来分隔表头和其他行。
+设置对齐方式: "-:"右对齐，":-"左对齐，":-:"居中对齐
+示例：
+| left  | right | medium |
+| :-    | -:    |  :-:   |
+| item1 | item2 | item3  |
+
+(16)元字符
+支持以下符号前面加上反斜杠来帮助插入普通的符号:
+\   反斜线
+`   反引号
+*   星号
+_   下划线
+{}  花括号
+[]  方括号
+()  小括号
+#   井字号
++   加号
+-   减号
+.   英文句点
+!   感叹号
+
+(17)公式
+Markdown使用 KaTeX 或者 MathJax 来渲染数学表达式
+使用$...$, 或者\(...\)可以在行内显示数学表达式
+使用$$...$$, 或者\[...\], 或者```math将会在块内显示数学表达式
+示例1:
+$f(x)=sin(x)+12;$
+示例2: 
+$$
+\begin{Bmatrix}
+   a & b \\
+   c & d
+\end{Bmatrix}
+$$
+$$
+\begin{CD}
+   A @>a>> B \\
+@VbVV @AAcA \\
+   C @= D
+\end{CD}
+$$
+
+(18)流程图
+示例1: 横向流程图源码格式：
+```mermaid
+graph LR
+A[方形] -->B(圆角)
+    B --> C{条件a}
+    C -->|a=1| D[结果1]
+    C -->|a=2| E[结果2]
+    F[横向流程图]
+```
+
+示例2: 竖向流程图源码格式：
+```mermaid
+graph TD
+A[方形] --> B(圆角)
+    B --> C{条件a}
+    C --> |a=1| D[结果1]
+    C --> |a=2| E[结果2]
+    F[竖向流程图]
+```
+
+示例3: 标准流程图源码格式：
+```flow
+st=>start: 开始框
+op=>operation: 处理框
+cond=>condition: 判断框(是或否?)
+sub1=>subroutine: 子流程
+io=>inputoutput: 输入输出框
+e=>end: 结束框
+st->op->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op
+```
+
+示例4: 标准流程图源码格式（横向）：
+```flow
+st=>start: 开始框
+op=>operation: 处理框
+cond=>condition: 判断框(是或否?)
+sub1=>subroutine: 子流程
+io=>inputoutput: 输入输出框
+e=>end: 结束框
+st(right)->op(right)->cond
+cond(yes)->io(bottom)->e
+cond(no)->sub1(right)->op
+```
+
+示例5: UML时序图源码样例：
+```sequence
+对象A->对象B: 对象B你好吗?（请求）
+Note right of 对象B: 对象B的描述
+Note left of 对象A: 对象A的描述(提示)
+对象B-->对象A: 我很好(响应)
+对象A->对象B: 你真的好吗？
+```
+
+示例6: UML时序图源码复杂样例：
+```sequence
+Title: 标题：复杂使用
+对象A->对象B: 对象B你好吗?（请求）
+Note right of 对象B: 对象B的描述
+Note left of 对象A: 对象A的描述(提示)
+对象B-->对象A: 我很好(响应)
+对象B->小三: 你好吗
+小三-->>对象A: 对象B找我了
+对象A->对象B: 你真的好吗？
+Note over 小三,对象B: 我们是朋友
+participant C
+Note right of C: 没人陪我玩
+```
+
+示例7: UML标准时序图样例：
+```mermaid
+%% 时序图例子,-> 直线，-->虚线，->>实线箭头
+  sequenceDiagram
+    participant 张三
+    participant 李四
+    张三->王五: 王五你好吗？
+    loop 健康检查
+        王五->王五: 与疾病战斗
+    end
+    Note right of 王五: 合理 食物 <br/>看医生...
+    李四-->>张三: 很好!
+    王五->李四: 你怎么样?
+    李四-->王五: 很好!
+```
+
+示例8: 甘特图样例：
+```mermaid
+%% 语法示例
+        gantt
+        dateFormat  YYYY-MM-DD
+        title 软件开发甘特图
+        section 设计
+        需求                      :done,    des1, 2014-01-06,2014-01-08
+        原型                      :active,  des2, 2014-01-09, 3d
+        UI设计                     :         des3, after des2, 5d
+    未来任务                     :         des4, after des3, 5d
+        section 开发
+        学习准备理解需求                      :crit, done, 2014-01-06,24h
+        设计框架                             :crit, done, after des2, 2d
+        开发                                 :crit, active, 3d
+        未来任务                              :crit, 5d
+        耍                                   :2d
+        section 测试
+        功能测试                              :active, a1, after des3, 3d
+        压力测试                               :after a1  , 20h
+        测试报告                               : 48h
+```
+
