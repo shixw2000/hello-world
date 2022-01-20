@@ -43,8 +43,8 @@ this is word link[Runoob][runoob]
 示例1: this is a new line.<br>
 示例2: this is two space and CRLF
 this is the new line
-(9)缩进
-使用>来标识缩进，使用多个>对应多级缩进。
+(9)引用缩进
+使用>来标识引用缩进，使用多个>对应多级缩进。
 示例: > level_1
 	  >> level_2
 	  >>> level_3
