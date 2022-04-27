@@ -1,0 +1,23 @@
+http    80/tcp 
+http   8080/tcp 
+http   9090/tcp
+http   8888/tcp
+http   9999/tcp
+http   4000/tcp
+http   5000/tcp
+http   8000/tcp
+http   9000/tcp
+
+http	443/tcp 
+http	3443/tcp
+http	4430/tcp
+http	4433/tcp
+http 	7443/tcp
+http	4443/tcp
+http	8443/tcp
+http 	9443/tcp
+http 	10443/tcp
+http 	44443/tcp
+http 	60443/tcp
+http    7080/tcp
+http    81/tcp
