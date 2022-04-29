@@ -111,7 +111,8 @@ local function set_global_key(tbl_name, sec_name, key, val)
 end
 
 local function trim(text)
-    return string.gsub(text, '^[%s]*(.-)[%s]*$', "%1");
+    local s = string.gsub(text, '^[%s]*(.-)[%s]*$', "%1");
+    return s;
 end
 
 local function strsplit_trim(pattern, text)
@@ -130,6 +131,11 @@ local function strsplit_trim(pattern, text)
 
     return list;
 end
+
+local function decode_hex(text)
+    local s = string.gsub(text, "\\x(%x%x)", function(h) return string.char(tonumber(h, 16)) end)
+    return s;
+end 
 
 prerule = function()
     return true;
@@ -552,17 +558,17 @@ local function analyse_url(item)
                 e = string.match(patt, "^CMODEL:(.*)$");
                 
                 method = "cmodel"; 
-                val = {e};
+                val = { decode_hex(e) };
             elseif (string.match(patt, "^MODEL:(.*)$")) then
                 e = string.match(patt, "^MODEL:(.*)$");
                 
                 method = "model"; 
-                val = {e};
+                val = { decode_hex(e) };
             else
                 method = "expr";
                 --patt is whole words
 
-                val = {patt};
+                val = { decode_hex(patt) };
             end 
             
             arr_rule[#arr_rule+1] = {
